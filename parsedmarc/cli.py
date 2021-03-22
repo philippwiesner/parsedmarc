@@ -223,6 +223,7 @@ def _main():
                      elasticsearch_index_suffix=None,
                      elasticsearch_ssl=True,
                      elasticsearch_ssl_cert_path=None,
+                     elasticsearch_verify_ssl=True,
                      elasticsearch_monthly_indexes=False,
                      elasticsearch_single_index=False,
                      elasticsearch_username=None,
