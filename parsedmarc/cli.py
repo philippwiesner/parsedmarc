@@ -89,6 +89,7 @@ def _main():
                             report,
                             index_suffix=opts.elasticsearch_index_suffix,
                             monthly_indexes=opts.elasticsearch_monthly_indexes,
+                            single_index=opts.elasticsearch_single_index,
                             number_of_shards=shards,
                             number_of_replicas=replicas
                         )
@@ -122,6 +123,7 @@ def _main():
                             report,
                             index_suffix=opts.elasticsearch_index_suffix,
                             monthly_indexes=opts.elasticsearch_monthly_indexes,
+                            single_index=opts.elasticsearch_single_index,
                             number_of_shards=shards,
                             number_of_replicas=replicas)
                 except elastic.AlreadySaved as warning:
@@ -222,6 +224,7 @@ def _main():
                      elasticsearch_ssl=True,
                      elasticsearch_ssl_cert_path=None,
                      elasticsearch_monthly_indexes=False,
+                     elasticsearch_single_index=False,
                      elasticsearch_username=None,
                      elasticsearch_password=None,
                      kafka_hosts=None,
@@ -353,6 +356,9 @@ def _main():
             if "monthly_indexes" in elasticsearch_config:
                 monthly = elasticsearch_config.getboolean("monthly_indexes")
                 opts.elasticsearch_monthly_indexes = monthly
+            if "single_index" in elasticsearch_config:
+                single = elasticsearch_config.getboolean("single_index")
+                opts.elasticsearch_monthly_indexes = single
             if "ssl" in elasticsearch_config:
                 opts.elasticsearch_ssl = elasticsearch_config.getboolean(
                     "ssl")
