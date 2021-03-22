@@ -365,6 +365,9 @@ def _main():
             if "cert_path" in elasticsearch_config:
                 opts.elasticsearch_ssl_cert_path = elasticsearch_config[
                     "cert_path"]
+            if "verify_ssl" in elasticsearch_config:
+                opts.elasticsearch_verify_ssl = \
+                    elasticsearch_config.getboolean("verify_ssl")
             if "user" in elasticsearch_config:
                 opts.elasticsearch_username = elasticsearch_config[
                     "user"]
@@ -510,6 +513,7 @@ def _main():
                 elastic.set_hosts(opts.elasticsearch_hosts,
                                   opts.elasticsearch_ssl,
                                   opts.elasticsearch_ssl_cert_path,
+                                  opts.elasticsearch_verify_ssl,
                                   opts.elasticsearch_username,
                                   opts.elasticsearch_password,
                                   timeout=opts.elasticsearch_timeout)

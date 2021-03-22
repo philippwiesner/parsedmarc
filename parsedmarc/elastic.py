@@ -171,7 +171,7 @@ class AlreadySaved(ValueError):
     """Raised when a report to be saved matches an existing report"""
 
 
-def set_hosts(hosts, use_ssl=False, ssl_cert_path=None,
+def set_hosts(hosts, use_ssl=False, ssl_cert_path=None, verify_ssl=True,
               username=None, password=None, timeout=60.0):
     """
     Sets the Elasticsearch hosts to use
@@ -180,6 +180,7 @@ def set_hosts(hosts, use_ssl=False, ssl_cert_path=None,
         hosts (str): A single hostname or URL, or list of hostnames or URLs
         use_ssl (bool): Use a HTTPS connection to the server
         ssl_cert_path (str): Path to the certificate chain
+        verify_ssl (bool): Verify SSL cert
         username (str): The username to use for authentication
         password (str): The password to use for authentication
         timeout (float): Timeout in seconds
@@ -193,7 +194,7 @@ def set_hosts(hosts, use_ssl=False, ssl_cert_path=None,
     if use_ssl:
         conn_params['use_ssl'] = True
         if ssl_cert_path:
-            conn_params['verify_certs'] = True
+            conn_params['verify_certs'] = verify_ssl
             conn_params['ca_certs'] = ssl_cert_path
         else:
             conn_params['verify_certs'] = False
