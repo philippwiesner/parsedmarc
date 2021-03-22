@@ -359,7 +359,7 @@ def _main():
                 opts.elasticsearch_monthly_indexes = monthly
             if "single_index" in elasticsearch_config:
                 single = elasticsearch_config.getboolean("single_index")
-                opts.elasticsearch_monthly_indexes = single
+                opts.elasticsearch_single_index = single
             if "ssl" in elasticsearch_config:
                 opts.elasticsearch_ssl = elasticsearch_config.getboolean(
                     "ssl")
